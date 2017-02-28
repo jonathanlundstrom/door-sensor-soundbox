@@ -14,5 +14,16 @@ Please refer to this link for a complete description on how and where to use thi
 
 [http://jonathanlundstrom.me/2017/02/27/door-sensor-raspberry-pi](http://jonathanlundstrom.me/2017/02/27/door-sensor-raspberry-pi)
 
+### Supervisor job
+If you wish to have the software running all the time, you can use Supervisor to accomplish this. This is the configuration file that I use. It should be placed in `/etc/supervisor/conf.d` and named `sensor.conf` or similar.
+
+    [program:sensor]
+    directory=/home/pi/Applications/DoorSensor
+    command=python sensor.py
+    autostart=true
+    autorestart=true
+    stderr_logfile=/var/log/sensor.err.log
+    stdout_logfile=/var/log/sensor.out.log
+
 ### Finished product
 This section will in time be updated with a video of the final build and product.
